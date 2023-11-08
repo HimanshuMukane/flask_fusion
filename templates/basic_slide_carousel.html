@@ -1,0 +1,48 @@
+{% extends 'output_template.html' %}
+
+{% block css_links %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HimanshuMukane/cssandjsdump@main/css/Carousel.css">
+{% endblock %}
+{% block body %}
+
+<main class="main">
+    <div class="carousel">
+        <button type="button" class="carousel_btn jsPrev" aria-label="Previous slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            </svg>
+        </button>
+
+        <div class="carousel_track-container">
+            <ul class="carousel_track">
+                {% for item in items %}
+                {% if loop.index == 1 %}
+                {% set selected = "is-selected" %}
+                {% else %}
+                {% set selected = "" %}
+                {% endif %}
+                <li class="carousel_slide {{ selected}}">
+                    <div class="carousel_image">
+                        <img src="/static/user_uploaded/{{item['image']}}" alt="" role="presentation">
+                    </div>
+                    <h2 class="carousel_title">{{item['text_content']}}</h2>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <button type="button" class="carousel_btn jsNext" aria-label="Next slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            </svg>
+        </button>
+    </div>
+</main>
+{% endblock %}
+
+{% block js_links %}
+<script src="https://cdn.jsdelivr.net/gh/HimanshuMukane/cssandjsdump@main/js/Carousel.js"></script>
+{% endblock %}
+
+</html>
